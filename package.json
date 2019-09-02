@@ -2,15 +2,21 @@
   "name": "markdownpreviewer",
   "version": "0.1.0",
   "private": true,
+  "homepage": "http://techcarpenter.github.io/markdownpreviewer/",
   "dependencies": {
+    "gh-pages": "^2.1.1",
+    "marked": "^0.7.0",
     "react": "^16.9.0",
     "react-dom": "^16.9.0",
-    "react-scripts": "3.1.1"
+    "react-scripts": "3.1.1",
+    "showdown": "^1.9.0"
   },
   "scripts": {
     "start": "react-scripts start",
     "build": "react-scripts build",
     "test": "react-scripts test",
+    "predeploy": "npm run build",
+    "deploy": "gh-pages -d build",
     "eject": "react-scripts eject"
   },
   "eslintConfig": {

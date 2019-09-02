@@ -24,20 +24,48 @@
       work correctly both with client-side routing and a non-root public URL.
       Learn how to configure a non-root public URL by running `npm run build`.
     -->
-    <title>React App</title>
+    <title>Markdown Previewer</title>
   </head>
   <body>
     <noscript>You need to enable JavaScript to run this app.</noscript>
-    <div id="root"></div>
+    <div id="wrapper" class="wrapper-class">
+      <div class="input-wrapper-class">
+        <textarea
+          id="editor"
+          class="input-box-class"
+          onInput="UpdatePreview()"
+        >
+# Welcome to my React Markdown Previewer!&#13;&#10;&#13;&#10;## This is a sub-heading...&#13;&#10;### And here's some other cool stuff:&#13;&#10;&#13;&#10;Heres some code, `<div></div>`, between 2 backticks.&#13;&#10;&#13;&#10;```&#13;&#10;// this is multi-line code:&#13;&#10;&#13;&#10;function anotherExample(firstLine, lastLine) {&#13;&#10;  if (firstLine == '```' && lastLine == '```') {&#13;&#10;    return multiLineCode;&#13;&#10;  }&#13;&#10;}&#13;&#10;```&#13;&#10;&#13;&#10;You can also make text **bold**... whoa!&#13;&#10;Or _italic_.&#13;&#10;Or... wait for it... **_both!_**&#13;&#10;And feel free to go crazy ~~crossing stuff out~~.&#13;&#10;&#13;&#10;There are also [links](https://www.freecodecamp.com), and&#13;&#10;> Block Quotes!&#13;&#10;&#13;&#10;And if you want to get really crazy, even tables:&#13;&#10;&#13;&#10;Wild Header  | Crazy Header  | Another Header?&#13;&#10;------------ | ------------- | ------------- &#13;&#10;Your content can | be here, and it | can be here....&#13;&#10;And here. | Okay. | I think we get it.&#13;&#10;&#13;&#10;- And of course there are lists.&#13;&#10;- Some are bulleted.&#13;&#10;- With different indentation levels.&#13;&#10;- That look like this.&#13;&#10;&#13;&#10;&#13;&#10;1. And there are numbererd lists too.&#13;&#10;1. Use just 1s if you want! &#13;&#10;1. But the list goes on...&#13;&#10;- Even if you use dashes or asterisks.&#13;&#10;* And last but not least, let's not forget embedded images:&#13;&#10;&#13;&#10;![React Logo w/ Text](https://goo.gl/Umyytc)</textarea
+        >
+      </div>
+      <div id="preview-wrapper" class="preview-wrapper-class">
+        <div id="preview" class="preview-class"></div>
+      </div>
+    </div>
     <!--
-      This HTML file is a template.
-      If you open it directly in the browser, you will see an empty page.
-
-      You can add webfonts, meta tags, or analytics to this file.
-      The build step will place the bundled scripts into the <body> tag.
-
-      To begin the development, run `npm start` or `yarn start`.
-      To create a production bundle, use `npm run build` or `yarn build`.
+      User Story #1: I can see a textarea element with a corresponding id="editor".
+      User Story #2: I can see an element with a corresponding id="preview".
+      User Story #3: When I enter text into the #editor element, the #preview element is updated as I type to display the content of the textarea.
+      User Story #4: When I enter GitHub flavored markdown into the #editor element, the text is rendered as HTML in the #preview element as I type (HINT: You don't need to parse Markdown yourself - you can import the Marked library for this: https://cdnjs.com/libraries/marked).
+      User Story #5: When my markdown previewer first loads, the default text in the #editor field should contain valid markdown that represents at least one of each of the following elements: a header (H1 size), a sub header (H2 size), a link, inline code, a code block, a list item, a blockquote, an image, and bolded text.
+      User Story #6: When my markdown previewer first loads, the default markdown in the #editor field should be rendered as HTML in the #preview element.
     -->
+    <script src="https://cdn.freecodecamp.org/testable-projects-fcc/v1/bundle.js"></script>
   </body>
 </html>
+
+<script>
+  const selectElement = document.querySelector("#editor");
+
+  selectElement.addEventListener("change", event => {
+    const result = document.querySelector("#preview");
+    let input = event.target.value.replace(/\r\n|\r|\n/g, "<br>");
+    result.innerHTML = input;
+  });
+  function UpdatePreview() {
+    let input = document.getElementById("editor").innerHTML;
+    input = input.replace(/\r\n|\r|\n/g, "<br>");
+    document.getElementById("preview").innerHTML = input;
+    console.log(input);
+  }
+</script>

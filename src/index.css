@@ -1,3 +1,7 @@
+:root {
+  --border: 4px solid rgb(115, 58, 173);
+  --backgroundColor: rgba(164, 106, 221, 0.555);
+}
 body {
   margin: 0;
   font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "Roboto", "Oxygen",
@@ -10,4 +14,41 @@ body {
 code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, "Courier New",
     monospace;
+}
+
+.wrapper-class {
+  display: flex;
+  flex-direction: column;
+}
+
+.preview-wrapper-class {
+  display: flex;
+  flex-direction: column;
+  justify-self: center;
+  margin: auto;
+}
+
+.preview-class {
+  justify-self: center;
+  margin: 2em;
+  border: var(--border);
+  background-color: var(--backgroundColor);
+  padding: 0.5em;
+  max-width: 75vw;
+  min-width: 50vw;
+}
+
+.input-wrapper-class {
+  justify-self: center;
+  margin: auto;
+}
+
+.input-box-class {
+  padding: 0.5em;
+  border: var(--border);
+  background-color: var(--backgroundColor);
+  margin: 2em;
+  min-height: 200px;
+  min-width: 600px;
+  word-wrap: normal;
 }
