@@ -2,7 +2,7 @@
   "name": "markdownpreviewer",
   "version": "0.1.0",
   "private": true,
-  "homepage": "http://techcarpenter.github.io/markdownpreviewer/",
+  "homepage": "http://techcarpenter.gitlab.io/markdownpreviewer/",
   "dependencies": {
     "gh-pages": "^2.1.1",
     "marked": "^0.7.0",
